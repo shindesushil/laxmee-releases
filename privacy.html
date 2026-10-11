@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en-IN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Privacy Policy — Laxmee</title>
+<meta name="description" content="How Laxmee handles your information: bank SMS are read and stored only on your phone, encrypted. No account, no server, no analytics.">
+<link rel="canonical" href="https://laxmee.in/privacy.html">
+<meta name="theme-color" content="#0B110E">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Laxmee">
+<meta property="og:title" content="Privacy Policy — Laxmee">
+<meta property="og:description" content="Bank SMS are read and stored only on your phone, encrypted. No account, no server, no analytics.">
+<meta property="og:url" content="https://laxmee.in/privacy.html">
+<meta property="og:image" content="https://laxmee.in/og/laxmee-og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/favicon.ico" sizes="48x48">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="stylesheet" href="/assets/site.css">
+</head>
+<body>
+<header class="site-header scrolled">
+  <div class="wrap nav">
+    <a class="brand" href="/" aria-label="Laxmee home">
+      <img class="mark" src="/assets/img/lotus-mint.png" width="40" height="30" alt="">
+      <img class="word" src="/assets/img/wordmark-light.png" width="111" height="22" alt="Laxmee">
+    </a>
+    <a class="btn btn-ghost nav-cta" href="/" style="display:inline-flex">Back to laxmee.in</a>
+  </div>
+</header>
+<main class="wrap doc" id="main">
+  <span class="eyebrow">Privacy</span>
+  <h1>Privacy policy</h1>
+  <p>Last updated 11 October 2026. This policy covers the Laxmee app for Android and this website.</p>
+  <p class="note">Draft for review before Laxmee's public release. It describes how the app works today.</p>
+
+  <h2>The short version</h2>
+  <ul>
+    <li>Laxmee reads your bank's transaction SMS <strong>on your phone</strong> and stores what it finds <strong>on your phone</strong>, encrypted.</li>
+    <li>There is no Laxmee account, no Laxmee server and no analytics. We never receive your messages, transactions or balances.</li>
+    <li>Uninstalling Laxmee deletes everything it stored.</li>
+  </ul>
+
+  <h2>What the app reads</h2>
+  <p>With your permission, Laxmee reads SMS from business senders (sender IDs like <code>JM-HDFCBK</code>) that mention money, and listens for new ones so it stays up to date. Messages from people are never opened. Of the business messages it reads:</p>
+  <ul>
+    <li>Bank transaction alerts are kept so your history can be re-read when the app improves, and so you can see the original message behind each transaction.</li>
+    <li>One-time passwords and offers are recognised and their text is discarded straight away.</li>
+    <li>Messages from non-bank businesses are not kept, unless they read like a payment, in which case they are kept so they can be read correctly if that sender turns out to be a bank.</li>
+  </ul>
+
+  <h2>Where it is stored</h2>
+  <p>Everything Laxmee stores is in an encrypted database on your phone. The encryption key is created on your phone and kept in Android's secure key storage; it never leaves the device. Laxmee turns off Android's automatic cloud backup for its data, so it is not copied to Google Drive.</p>
+
+  <h2>What leaves your phone</h2>
+  <ul>
+    <li><strong>Update check.</strong> Once a day, the app asks <code>https://laxmee.in/latest.json</code> whether a newer version exists. The request contains nothing about you; like any web request, it reveals your phone's internet address to the site's host (GitHub Pages). You can turn this off in Profile › Updates. Copies installed from Google Play are updated by Google Play.</li>
+    <li><strong>Backups and exports you make.</strong> An encrypted backup (protected by a password only you know) or an Excel/CSV export goes only where you choose to save or share it. Exports are not encrypted, and the app says so.</li>
+    <li><strong>Optional features.</strong> If a future version offers on-device "Smarter reading", it will be off by default; turning it on downloads a model once, and your messages are still read on your phone only. Purchases, when offered, are handled by Google Play.</li>
+  </ul>
+  <p>Laxmee has no crash reporting, analytics or advertising.</p>
+
+  <h2>Permissions</h2>
+  <ul>
+    <li><strong>Read and receive SMS:</strong> to build your transactions from bank alerts.</li>
+    <li><strong>Fingerprint or face:</strong> only if you turn on app lock.</li>
+    <li><strong>Internet:</strong> for the update check described above.</li>
+  </ul>
+
+  <h2>This website</h2>
+  <p>laxmee.in is a static site hosted on GitHub Pages. It uses no cookies, analytics or third-party scripts, and its fonts are served from laxmee.in itself. GitHub may keep standard server logs, such as IP addresses, under its own privacy statement.</p>
+
+  <h2>Your control</h2>
+  <ul>
+    <li>Delete a transaction, change any category, or hide an account that isn't yours.</li>
+    <li>Turn off SMS access in Android settings at any time; Laxmee keeps working with what it has and with entries you add by hand.</li>
+    <li>Uninstall to delete everything Laxmee stored.</li>
+  </ul>
+
+  <h2>Children</h2>
+  <p>Laxmee is meant for adults managing their own money and is not directed at children.</p>
+
+  <h2>Changes</h2>
+  <p>If this policy changes, the new version will be posted here with a new date.</p>
+</main>
+<footer class="site-footer">
+  <div class="wrap legal" style="margin-top:0;border-top:0;padding-top:0"><span>© <span id="year">2026</span> Laxmee</span><span><a href="/">Home</a> · <a href="/terms.html">Terms of service</a></span></div>
+</footer>
+<script>document.getElementById('year').textContent = String(new Date().getFullYear());</script>
+</body>
+</html>

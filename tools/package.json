@@ -1,0 +1,8 @@
+{
+  "name": "laxmee-site-tools",
+  "private": true,
+  "type": "module",
+  "description": "Builds the site's fonts, images, icons and share image from the app's brand assets.",
+  "scripts": { "assets": "node build-assets.mjs", "og": "node build-og.mjs" },
+  "devDependencies": { "sharp": "^0.35.5", "subset-font": "^2.4.0" }
+}

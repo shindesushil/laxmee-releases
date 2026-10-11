@@ -1,94 +1,468 @@
 <!doctype html>
-<html lang="en">
+<html lang="en-IN">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Laxmee</title>
-<meta name="description" content="Laxmee reads your bank SMS on your phone and shows where your money goes. Nothing leaves your phone.">
-<style>
-/* Placeholder download page (the designed site is milestone D4). System fonts only: no third-party requests. */
-:root {
-  --bg: #F8FAF7; --surface: #FFFFFF; --ink: #15251D; --ink2: #5F6C64; --rule: #E6EBE5;
-  --brand: #006B45; --onbrand: #FFFFFF; --gold: #F5B82E; --soft: #EAF5EF;
-  color-scheme: light;
+<title>Laxmee — Personal Finance, With Clarity</title>
+<meta name="description" content="A clearer view of your money. Laxmee turns the SMS your bank already sends into spending, budgets, upcoming payments and savings goals, privately on your Android phone.">
+<link rel="canonical" href="https://laxmee.in/">
+<meta name="theme-color" content="#0B110E">
+<meta name="color-scheme" content="dark">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Laxmee">
+<meta property="og:title" content="Laxmee — Personal Finance, With Clarity">
+<meta property="og:description" content="A clearer view of your money. Spending, budgets, upcoming payments and savings goals, privately on your Android phone.">
+<meta property="og:url" content="https://laxmee.in/">
+<meta property="og:image" content="https://laxmee.in/og/laxmee-og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Laxmee: Make room for what matters. The Laxmee lotus logo beside the app's Home screen on a forest green background.">
+<meta property="og:locale" content="en_IN">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Laxmee — Personal Finance, With Clarity">
+<meta name="twitter:description" content="A clearer view of your money. Spending, budgets, upcoming payments and savings goals, privately on your Android phone.">
+<meta name="twitter:image" content="https://laxmee.in/og/laxmee-og.png">
+<meta name="twitter:image:alt" content="Laxmee: Make room for what matters. The Laxmee lotus logo beside the app's Home screen on a forest green background.">
+
+<link rel="icon" href="/favicon.ico" sizes="48x48">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="preload" href="/assets/fonts/manrope-800.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/inter-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/site.css">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    { "@type": "WebSite", "@id": "https://laxmee.in/#website", "name": "Laxmee", "url": "https://laxmee.in/", "inLanguage": "en-IN", "publisher": { "@id": "https://laxmee.in/#org" } },
+    { "@type": "Organization", "@id": "https://laxmee.in/#org", "name": "Laxmee", "url": "https://laxmee.in/", "logo": "https://laxmee.in/icon-512.png" }
+  ]
 }
-@media (prefers-color-scheme: dark) {
-  :root { --bg: #0B110E; --surface: #121A16; --ink: #E6EDE8; --ink2: #9BA89F; --rule: #222E28;
-          --brand: #3CC28C; --onbrand: #03140C; --soft: #11281E; color-scheme: dark; }
-}
-* { box-sizing: border-box; }
-body { margin: 0; background: var(--bg); color: var(--ink);
-  font: 16px/1.55 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
-main { max-width: 640px; margin: 0 auto; padding: 48px 20px 64px; display: flex; flex-direction: column; gap: 28px; }
-h1 { font-size: 40px; line-height: 1.1; letter-spacing: -1px; margin: 0; }
-h1 span { color: var(--gold); }
-h2 { font-size: 18px; margin: 0 0 8px; }
-p { margin: 0; color: var(--ink2); }
-.card { background: var(--surface); border: 1px solid var(--rule); border-radius: 24px; padding: 20px; display: flex; flex-direction: column; gap: 12px; }
-.btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; background: var(--brand); color: var(--onbrand);
-  text-decoration: none; font-weight: 700; padding: 14px 22px; border-radius: 999px; font-size: 17px; }
-.btn:focus-visible { outline: 3px solid var(--gold); outline-offset: 2px; }
-.meta { font-size: 14px; color: var(--ink2); }
-code { font: 12px/1.5 ui-monospace, SFMono-Regular, Consolas, monospace; word-break: break-all; background: var(--soft); padding: 2px 6px; border-radius: 6px; color: var(--ink); }
-ol, ul { margin: 0; padding-left: 20px; color: var(--ink2); display: flex; flex-direction: column; gap: 6px; }
-footer { font-size: 13px; color: var(--ink2); }
-a { color: var(--brand); }
-</style>
+</script>
 </head>
 <body>
-<main>
-  <header>
-    <h1>Laxmee<span>.</span></h1>
-    <p style="margin-top:10px">Reads your bank SMS on your phone and shows where your money goes: spending, income, budgets and goals. No account, no server. Nothing leaves your phone.</p>
-  </header>
+<a class="skip" href="#main">Skip to content</a>
 
-  <section class="card" aria-labelledby="dl">
-    <h2 id="dl">Download for Android</h2>
-    <div><a class="btn" id="download" href="https://github.com/shindesushil/laxmee-releases/releases/latest">Download Laxmee</a></div>
-    <p class="meta" id="version">Android 8 or newer, 64-bit phones.</p>
-    <ul id="notes" hidden></ul>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-bell" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></symbol>
+    <symbol id="i-user" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></symbol>
+    <symbol id="i-search" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></symbol>
+    <symbol id="i-file" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M16 13H8"/><path d="M16 17H8"/></symbol>
+    <symbol id="i-home" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8"/><path d="M3 10a2 2 0 0 1 .709-1.528l7-5.999a2 2 0 0 1 2.582 0l7 5.999A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></symbol>
+    <symbol id="i-list" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h.01"/><path d="M3 18h.01"/><path d="M3 6h.01"/><path d="M8 12h13"/><path d="M8 18h13"/><path d="M8 6h13"/></symbol>
+    <symbol id="i-pie" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12c.552 0 1.005-.449.95-.998a10 10 0 0 0-8.953-8.951c-.55-.055-.998.398-.998.95v8a1 1 0 0 0 1 1z"/><path d="M21.21 15.89A10 10 0 1 1 8 2.83"/></symbol>
+    <symbol id="i-target" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></symbol>
+    <symbol id="i-plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12h14"/><path d="M12 5v14"/></symbol>
+    <symbol id="i-food" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"/><path d="M7 2v20"/><path d="M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7"/></symbol>
+    <symbol id="i-basket" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 11-1 9"/><path d="m19 11-4-7"/><path d="M2 11h20"/><path d="m3.5 11 1.6 7.4a2 2 0 0 0 2 1.6h9.8a2 2 0 0 0 2-1.6l1.7-7.4"/><path d="M4.5 15.5h15"/><path d="m5 11 4-7"/><path d="m9 11 1 9"/></symbol>
+    <symbol id="i-car" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.4 2.9A3.7 3.7 0 0 0 2 12v4c0 .6.4 1 1 1h2"/><circle cx="7" cy="17" r="2"/><path d="M9 17h6"/><circle cx="17" cy="17" r="2"/></symbol>
+    <symbol id="i-repeat" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m17 2 4 4-4 4"/><path d="M3 11v-1a4 4 0 0 1 4-4h14"/><path d="m7 22-4-4 4-4"/><path d="M21 13v1a4 4 0 0 1-4 4H3"/></symbol>
+    <symbol id="i-trend" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 7 13.5 15.5 8.5 10.5 2 17"/><path d="M16 7h6v6"/></symbol>
+    <symbol id="i-bag" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></symbol>
+    <symbol id="i-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16"/><path d="M4 12h16"/><path d="M4 17h16"/></symbol>
+    <symbol id="i-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></symbol>
+    <symbol id="i-plusthin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14"/><path d="M5 12h14"/></symbol>
+    <symbol id="i-plane" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"/></symbol>
+    <linearGradient id="g-flow" x1="0" x2="1" y1="0" y2="0"><stop offset="0" stop-color="#1E9A6B"/><stop offset="0.6" stop-color="#72D2A2"/><stop offset="1" stop-color="#F5B82E"/></linearGradient>
+    <linearGradient id="g-gold" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#F5B82E" stop-opacity="0.35"/><stop offset="1" stop-color="#F5B82E" stop-opacity="0"/></linearGradient>
+    <linearGradient id="g-green" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#3CC28C" stop-opacity="0.35"/><stop offset="1" stop-color="#3CC28C" stop-opacity="0"/></linearGradient>
+  </defs>
+</svg>
+
+<header class="site-header" id="top">
+  <div class="wrap nav">
+    <a class="brand" href="#top" aria-label="Laxmee, back to top">
+      <img class="mark" src="/assets/img/lotus-mint.png" width="40" height="30" alt="">
+      <img class="word" src="/assets/img/wordmark-light.png" width="111" height="22" alt="Laxmee">
+    </a>
+    <nav aria-label="Main">
+      <ul class="nav-links">
+        <li><a href="#product">Product</a></li>
+        <li><a href="#features">Features</a></li>
+        <li><a href="#how-it-works">How it works</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ul>
+    </nav>
+    <a class="btn btn-primary nav-cta" href="#features">Explore Laxmee</a>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="mobile-menu" aria-label="Open menu">
+      <svg aria-hidden="true"><use href="#i-menu"/></svg>
+    </button>
+  </div>
+  <div class="mobile-menu" id="mobile-menu" hidden>
+    <div class="wrap">
+      <ul>
+        <li><a href="#product">Product</a></li>
+        <li><a href="#features">Features</a></li>
+        <li><a href="#how-it-works">How it works</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ul>
+      <a class="btn btn-primary" href="#features">Explore Laxmee</a>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- ===================== Hero ===================== -->
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="wrap hero-grid">
+      <div class="hero-copy">
+        <span class="eyebrow">Personal finance, with clarity</span>
+        <h1 id="hero-title">Make room for <span class="soft">what matters.</span></h1>
+        <p class="lede">Understand your spending, stay ahead of monthly payments and build toward your goals, all in one calm place.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#features">Explore Laxmee <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+          <a class="btn btn-ghost" href="#how-it-works">See how it works</a>
+        </div>
+        <p class="hero-note"><svg aria-hidden="true"><use href="#i-shield"/></svg>Built from the SMS your bank already sends. Nothing leaves your phone.</p>
+      </div>
+
+      <div class="hero-art">
+        <img class="leaves" src="/assets/img/leaves-dark.webp" width="720" height="1080" alt="" fetchpriority="low">
+        <div class="phone lg" role="img" aria-label="The Laxmee Home screen: a total balance of ₹1,62,790 on a green leaf card, October spending of ₹24,860, income of ₹96,000, and ₹18,140 left to spend.">
+          <div class="screen" aria-hidden="true">
+            <div class="sbar"><span>9:41</span><i></i></div>
+            <div class="scr">
+              <div class="shead">
+                <div><b>Good evening</b><small>● Up to date · just now</small></div>
+                <div class="ibtns"><span class="ib dot"><svg><use href="#i-bell"/></svg></span><span class="ib"><svg><use href="#i-user"/></svg></span></div>
+              </div>
+              <div class="balance">
+                <img src="/assets/img/leaf-card.webp" width="600" height="400" alt="">
+                <div class="in"><span class="lbl">Total balance</span><span class="amt" style="font-size:24px;color:#EEF6F1"><span class="r">₹</span>1,62,790</span></div>
+                <div class="accts"><div><span>HDFC ••4821</span><b class="amt" style="font-size:11px">₹1,24,580</b></div><div><span>SBI ••0932</span><b class="amt" style="font-size:11px">₹38,210</b></div></div>
+                <span class="upd">Updated 11 Oct, 8:42 pm</span>
+              </div>
+              <div class="secrow"><b>October</b><span class="muted" style="font-size:9px">day 11 of 31</span></div>
+              <div class="bento">
+                <div class="glass tile">
+                  <span class="t">Spent</span>
+                  <span class="amt" style="font-size:16px"><span class="r">₹</span>24,860</span>
+                  <span class="chip good">↓ ₹3,140 vs Sept</span>
+                  <svg viewBox="0 0 100 34" preserveAspectRatio="none" style="height:30px;width:100%"><path d="M0 28 C8 27 12 19 20 21 S32 31 42 25 S56 11 64 17 S78 27 88 14 L100 12 L100 34 L0 34Z" fill="url(#g-gold)"/><path d="M0 28 C8 27 12 19 20 21 S32 31 42 25 S56 11 64 17 S78 27 88 14 L100 12" fill="none" stroke="#F5B82E" stroke-width="2" vector-effect="non-scaling-stroke"/></svg>
+                </div>
+                <div class="glass tile">
+                  <span class="t">Income</span>
+                  <span class="amt" style="font-size:16px"><span class="r">₹</span>96,000</span>
+                  <span class="chip plain">Mostly salary</span>
+                  <svg viewBox="0 0 100 34" preserveAspectRatio="none" style="height:30px;width:100%"><path d="M0 4 C4 4 6 30 14 30 L100 30 L100 34 L0 34Z" fill="url(#g-green)"/><path d="M0 4 C4 4 6 30 14 30 L100 30" fill="none" stroke="#3CC28C" stroke-width="2" vector-effect="non-scaling-stroke"/></svg>
+                </div>
+                <div class="glass tile wide">
+                  <svg viewBox="0 0 80 46" style="width:78px;flex:none"><path d="M8 40 A32 32 0 0 1 72 40" fill="none" stroke="#1F2B25" stroke-width="9" stroke-linecap="round"/><path d="M8 40 A32 32 0 0 1 72 40" fill="none" stroke="url(#g-flow)" stroke-width="9" stroke-linecap="round" pathLength="100" stroke-dasharray="58 100"/></svg>
+                  <div><span class="t">Left to spend</span><div class="amt" style="font-size:17px"><span class="r">₹</span>18,140</div><span class="muted" style="font-size:8.5px">about ₹905 a day for 20 days</span></div>
+                </div>
+              </div>
+            </div>
+            <div class="tabbar"><span class="on"><svg><use href="#i-home"/></svg>Home</span><span><svg><use href="#i-list"/></svg>Activity</span><span class="add"><svg><use href="#i-plus"/></svg></span><span><svg><use href="#i-pie"/></svg>Budgets</span><span><svg><use href="#i-target"/></svg>Goals</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
   </section>
 
-  <section class="card" aria-labelledby="install">
-    <h2 id="install">Installing</h2>
-    <ol>
-      <li>Open the downloaded file. Android asks to let your browser install apps: allow it once.</li>
-      <li>If Play Protect says the app is unknown, tap <em>More details › Install anyway</em>.</li>
-      <li>Updating later? Make a backup first (Profile › Backup). Updates keep your data.</li>
-    </ol>
+  <!-- ===================== Brand introduction ===================== -->
+  <section class="band paper" id="product" aria-labelledby="product-title">
+    <div class="wrap">
+      <div class="intro">
+        <div class="intro-copy">
+          <span class="eyebrow">Why Laxmee</span>
+          <h2 id="product-title">Your money deserves a clearer picture.</h2>
+          <p class="lede">Daily expenses, monthly commitments and long-term goals all compete for attention. Laxmee brings them together, using the transaction alerts your bank already sends you, so the picture fills itself in.</p>
+        </div>
+        <div class="intro-art"><img src="/assets/img/plant-dark.webp" width="300" height="450" alt="" loading="lazy"></div>
+      </div>
+      <div class="intro-facts">
+        <div><strong>No bank login</strong><span>Laxmee never asks for your banking password or connects to your bank.</span></div>
+        <div><strong>No account</strong><span>No sign-up and no email. Open the app and start.</span></div>
+        <div><strong>Stays on your phone</strong><span>Your data is encrypted on the device and never uploaded.</span></div>
+      </div>
+    </div>
   </section>
 
-  <section class="card" aria-labelledby="check">
-    <h2 id="check">Check your download</h2>
-    <p class="meta">SHA-256 of the file:</p>
-    <code id="sha">see the release page</code>
-    <p class="meta">Signed with the Laxmee certificate, SHA-256:</p>
-    <code>84:2B:4F:D9:09:23:0F:E6:6F:E9:CF:95:47:AB:88:AA:2C:94:66:00:8A:05:54:EE:88:77:21:51:0D:A0:BD:18</code>
+  <!-- ===================== Product showcase ===================== -->
+  <section class="band" id="features" aria-labelledby="features-title">
+    <div class="wrap">
+      <div class="showcase-head">
+        <span class="eyebrow">Inside the app</span>
+        <h2 id="features-title">Four views. One calm picture of your money.</h2>
+      </div>
+
+      <article class="feature" aria-labelledby="f-home">
+        <div class="feature-art">
+          <div class="phone" role="img" aria-label="The Laxmee Home screen with the balance card and this month's spending, income and left to spend.">
+            <div class="screen" aria-hidden="true">
+              <div class="sbar"><span>9:41</span><i></i></div>
+              <div class="scr">
+                <div class="shead"><div><b>Good evening</b><small>● Up to date · just now</small></div><div class="ibtns"><span class="ib dot"><svg><use href="#i-bell"/></svg></span><span class="ib"><svg><use href="#i-user"/></svg></span></div></div>
+                <div class="balance"><img src="/assets/img/leaf-card.webp" width="600" height="400" alt="" loading="lazy"><div class="in"><span class="lbl">Total balance</span><span class="amt" style="font-size:22px;color:#EEF6F1"><span class="r">₹</span>1,62,790</span></div><div class="accts"><div><span>HDFC ••4821</span><b class="amt" style="font-size:10.5px">₹1,24,580</b></div><div><span>SBI ••0932</span><b class="amt" style="font-size:10.5px">₹38,210</b></div></div><span class="upd">Updated 11 Oct, 8:42 pm</span></div>
+                <div class="secrow"><b>Coming up</b><span class="muted" style="font-size:9px">next 10 days</span></div>
+                <div class="rows">
+                  <div class="row"><span class="tl t-blue"><svg><use href="#i-repeat"/></svg></span><div class="who"><b>Airtel postpaid</b><span>Due 14 Oct · bill</span></div><div class="val"><span class="amt"><span class="r">₹</span>599</span><small>in 3 days</small></div></div>
+                  <div class="row"><span class="tl t-green"><svg><use href="#i-trend"/></svg></span><div class="who"><b>Groww SIP</b><span>Due 15 Oct · investment</span></div><div class="val"><span class="amt"><span class="r">₹</span>5,000</span><small>in 4 days</small></div></div>
+                  <div class="row"><span class="tl t-violet"><svg><use href="#i-repeat"/></svg></span><div class="who"><b>Netflix</b><span>Due 18 Oct · subscription</span></div><div class="val"><span class="amt"><span class="r">₹</span>649</span><small>in 7 days</small></div></div>
+                </div>
+              </div>
+              <div class="tabbar"><span class="on"><svg><use href="#i-home"/></svg>Home</span><span><svg><use href="#i-list"/></svg>Activity</span><span class="add"><svg><use href="#i-plus"/></svg></span><span><svg><use href="#i-pie"/></svg>Budgets</span><span><svg><use href="#i-target"/></svg>Goals</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="feature-copy">
+          <span class="num">01 · HOME</span>
+          <h3 id="f-home">See your whole picture.</h3>
+          <p>Your balance across accounts, what you've spent and earned this month, what's left to spend, and the payments coming up next, on one calm screen.</p>
+          <ul class="ticks">
+            <li>Balances update from your bank's own SMS</li>
+            <li>Subscriptions, EMIs, SIPs and bills spotted for you</li>
+            <li>Every number opens the story behind it</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="feature" aria-labelledby="f-activity">
+        <div class="feature-art">
+          <div class="phone" role="img" aria-label="The Laxmee Activity screen: ₹8,412 spent this week, daily bars, and a list of transactions with category icons.">
+            <div class="screen" aria-hidden="true">
+              <div class="sbar"><span>9:41</span><i></i></div>
+              <div class="scr">
+                <div class="shead"><div><b>Activity</b><small>● Up to date · just now</small></div><div class="ibtns"><span class="ib"><svg><use href="#i-search"/></svg></span><span class="ib"><svg><use href="#i-file"/></svg></span></div></div>
+                <div class="seg"><span class="on">Week</span><span>Month</span><span>3 months</span><span>Year</span></div>
+                <div style="text-align:center;display:flex;flex-direction:column;align-items:center;gap:4px"><span class="muted" style="font-size:9px">Spent in the last 7 days</span><span class="amt" style="font-size:26px"><span class="r">₹</span>8,412</span><span class="chip good">↓ ₹1,120 vs last week</span></div>
+                <div class="glass" style="padding:10px 6px 8px"><div class="bars"><span style="height:46%"></span><span style="height:22%"></span><span style="height:64%"></span><span style="height:100%"></span><span style="height:38%"></span><span style="height:12%"></span><span class="today" style="height:30%"></span></div><div class="barlbl"><span>M</span><span>T</span><span>W</span><span>T</span><span>F</span><span>S</span><span class="today">S</span></div></div>
+                <div class="daypill"><span>Today</span><span>₹1,726 spent</span></div>
+                <div class="rows">
+                  <div class="row"><span class="tl t-red"><svg><use href="#i-food"/></svg></span><div class="who"><b>Swiggy</b><span>Food &amp; dining · HDFC ••4821</span></div><div class="val"><span class="amt">−₹486</span><small>8:42 pm</small></div></div>
+                  <div class="row"><span class="tl t-green"><svg><use href="#i-basket"/></svg></span><div class="who"><b>Blinkit</b><span>Groceries · HDFC ••4821</span></div><div class="val"><span class="amt">−₹1,240</span><small>6:15 pm</small></div></div>
+                </div>
+              </div>
+              <div class="tabbar"><span><svg><use href="#i-home"/></svg>Home</span><span class="on"><svg><use href="#i-list"/></svg>Activity</span><span class="add"><svg><use href="#i-plus"/></svg></span><span><svg><use href="#i-pie"/></svg>Budgets</span><span><svg><use href="#i-target"/></svg>Goals</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="feature-copy">
+          <span class="num">02 · ACTIVITY</span>
+          <h3 id="f-activity">Know where it went.</h3>
+          <p>Every payment, by day, week, month or year, with the category it belongs to. Search by merchant, amount or account, and change a category once for every payment to that payee.</p>
+          <ul class="ticks">
+            <li>Refunds net off what you bought, not counted as income</li>
+            <li>Transfers between your own accounts aren't spending</li>
+            <li>Anything Laxmee wasn't sure about waits in Needs review</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="feature" aria-labelledby="f-budgets">
+        <div class="feature-art">
+          <div class="phone" role="img" aria-label="The Laxmee Budgets screen: a gauge showing ₹18,140 left to spend this month, and budget rows with progress rings.">
+            <div class="screen" aria-hidden="true">
+              <div class="sbar"><span>9:41</span><i></i></div>
+              <div class="scr">
+                <div class="shead"><div><b>Budgets</b><small>October</small></div><div class="ibtns"><span class="ib"><svg><use href="#i-plusthin"/></svg></span></div></div>
+                <div class="glass" style="padding:12px 12px 10px;display:flex;flex-direction:column;align-items:center">
+                  <svg viewBox="0 0 200 112" style="width:88%"><path d="M16 100 A84 84 0 0 1 184 100" fill="none" stroke="#1F2B25" stroke-width="16" stroke-linecap="round"/><path d="M16 100 A84 84 0 0 1 184 100" fill="none" stroke="url(#g-flow)" stroke-width="16" stroke-linecap="round" pathLength="100" stroke-dasharray="58 100"/><circle cx="148" cy="38" r="6" fill="#0B110E" stroke="#F5B82E" stroke-width="3"/></svg>
+                  <div style="margin-top:-44px;text-align:center"><span class="muted" style="font-size:9px">Left to spend</span><div class="amt" style="font-size:24px"><span class="r">₹</span>18,140</div><span class="muted" style="font-size:8.5px">₹905 a day for 20 days</span></div>
+                </div>
+                <div class="seg"><span class="on">Everyday</span><span>Fixed costs</span></div>
+                <div>
+                  <div class="ringrow"><span class="tl t-red"><svg><use href="#i-food"/></svg></span><div class="who" style="flex:1;min-width:0"><b style="font-size:10.5px">Food &amp; dining</b><span class="muted" style="display:block;font-size:8.5px">₹6,240 of ₹9,000</span></div><svg viewBox="0 0 30 30" style="width:28px"><circle cx="15" cy="15" r="11" fill="none" stroke="#1F2B25" stroke-width="4"/><circle cx="15" cy="15" r="11" fill="none" stroke="#3CC28C" stroke-width="4" stroke-linecap="round" pathLength="100" stroke-dasharray="69 100" transform="rotate(-90 15 15)"/></svg></div>
+                  <div class="ringrow"><span class="tl t-green"><svg><use href="#i-basket"/></svg></span><div class="who" style="flex:1;min-width:0"><b style="font-size:10.5px">Groceries</b><span class="muted" style="display:block;font-size:8.5px">₹4,980 of ₹7,000</span></div><svg viewBox="0 0 30 30" style="width:28px"><circle cx="15" cy="15" r="11" fill="none" stroke="#1F2B25" stroke-width="4"/><circle cx="15" cy="15" r="11" fill="none" stroke="#3CC28C" stroke-width="4" stroke-linecap="round" pathLength="100" stroke-dasharray="71 100" transform="rotate(-90 15 15)"/></svg></div>
+                  <div class="ringrow"><span class="tl t-gold"><svg><use href="#i-bag"/></svg></span><div class="who" style="flex:1;min-width:0"><b style="font-size:10.5px">Shopping</b><span style="display:block;font-size:8.5px;color:#F0B95A">Near limit · ₹3,850 of ₹4,000</span></div><svg viewBox="0 0 30 30" style="width:28px"><circle cx="15" cy="15" r="11" fill="none" stroke="#1F2B25" stroke-width="4"/><circle cx="15" cy="15" r="11" fill="none" stroke="#E9A93A" stroke-width="4" stroke-linecap="round" pathLength="100" stroke-dasharray="96 100" transform="rotate(-90 15 15)"/></svg></div>
+                </div>
+              </div>
+              <div class="tabbar"><span><svg><use href="#i-home"/></svg>Home</span><span><svg><use href="#i-list"/></svg>Activity</span><span class="add"><svg><use href="#i-plus"/></svg></span><span class="on"><svg><use href="#i-pie"/></svg>Budgets</span><span><svg><use href="#i-target"/></svg>Goals</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="feature-copy">
+          <span class="num">03 · BUDGETS</span>
+          <h3 id="f-budgets">Spend with intention.</h3>
+          <p>Set a limit for the categories that matter and see what's left for the rest of the month, as a daily amount you can actually use. Fixed costs like rent and EMIs sit on their own, as paid or still to pay.</p>
+          <ul class="ticks">
+            <li>Suggested limits from your last three months</li>
+            <li>A gentle heads-up when a category nears its limit</li>
+            <li>This month against last, category by category</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="feature" aria-labelledby="f-goals">
+        <div class="feature-art">
+          <div class="phone" role="img" aria-label="The Laxmee Goals screen: ₹2,48,500 saved across goals, an emergency fund at 62 percent and a trip fund at 64 percent.">
+            <div class="screen" aria-hidden="true">
+              <div class="sbar"><span>9:41</span><i></i></div>
+              <div class="scr">
+                <div class="shead"><div><b>Goals</b><small>3 goals</small></div><div class="ibtns"><span class="ib"><svg><use href="#i-plusthin"/></svg></span></div></div>
+                <div class="glass" style="padding:12px;display:flex;align-items:center;gap:8px;position:relative;overflow:hidden">
+                  <div style="flex:1"><span class="muted" style="font-size:9px">Saved in goals</span><div class="amt" style="font-size:23px"><span class="r">₹</span>2,48,500</div><span class="chip good">+₹12,000 in 30 days</span></div>
+                  <img src="/assets/img/plant-dark.webp" width="300" height="450" alt="" loading="lazy" style="width:46px;height:auto">
+                </div>
+                <div class="glass goalwrap">
+                  <div class="goalcard">
+                    <svg viewBox="0 0 60 60" style="width:52px;flex:none"><defs><clipPath id="tank1"><circle cx="30" cy="30" r="25"/></clipPath></defs><circle cx="30" cy="30" r="27" fill="none" stroke="#1F2B25" stroke-width="2"/><g clip-path="url(#tank1)"><rect x="0" y="0" width="60" height="60" fill="#121A16"/><path d="M0 26 C10 22 20 30 30 26 S50 22 60 26 L60 60 L0 60Z" fill="#F5B82E" opacity="0.92"/></g><text x="30" y="41" text-anchor="middle" font-family="Manrope, sans-serif" font-weight="800" font-size="12" fill="#0B110E">62%</text></svg>
+                    <div class="gc"><b style="font-size:11px">Emergency fund</b><span class="amt" style="font-size:13px"><span class="r">₹</span>3,10,000</span><span class="muted" style="font-size:8.5px">of ₹5,00,000 · by Oct 2027</span></div>
+                  </div>
+                  <div class="strip ok">● On track: ₹14,000 a month reaches it on time</div>
+                </div>
+                <div class="glass goalwrap">
+                  <div class="goalcard">
+                    <svg viewBox="0 0 60 60" style="width:52px;flex:none"><defs><clipPath id="tank2"><circle cx="30" cy="30" r="25"/></clipPath></defs><circle cx="30" cy="30" r="27" fill="none" stroke="#1F2B25" stroke-width="2"/><g clip-path="url(#tank2)"><rect x="0" y="0" width="60" height="60" fill="#121A16"/><path d="M0 25 C10 21 20 29 30 25 S50 21 60 25 L60 60 L0 60Z" fill="#3CC28C" opacity="0.9"/></g><text x="30" y="41" text-anchor="middle" font-family="Manrope, sans-serif" font-weight="800" font-size="12" fill="#0B110E">64%</text></svg>
+                    <div class="gc"><b style="font-size:11px">Goa trip</b><span class="amt" style="font-size:13px"><span class="r">₹</span>38,500</span><span class="muted" style="font-size:8.5px">of ₹60,000 · by March</span></div>
+                  </div>
+                  <div class="strip slow">● ₹4,300 a month more gets you there</div>
+                </div>
+              </div>
+              <div class="tabbar"><span><svg><use href="#i-home"/></svg>Home</span><span><svg><use href="#i-list"/></svg>Activity</span><span class="add"><svg><use href="#i-plus"/></svg></span><span><svg><use href="#i-pie"/></svg>Budgets</span><span class="on"><svg><use href="#i-target"/></svg>Goals</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="feature-copy">
+          <span class="num">04 · GOALS</span>
+          <h3 id="f-goals">Make progress visible.</h3>
+          <p>Give each goal a target and, if you like, a date. Watch it fill up, see what you need to put in each month, and link a SIP so its payments count toward the goal by themselves.</p>
+          <ul class="ticks">
+            <li>An honest status from your last three months</li>
+            <li>Add or take out money by hand, with a note</li>
+            <li>Goals never move money; they track what's already saved</li>
+          </ul>
+        </div>
+      </article>
+    </div>
   </section>
 
-  <section class="card" aria-labelledby="privacy">
-    <h2 id="privacy">Privacy</h2>
-    <p>Your SMS, transactions and backups stay on your phone, encrypted. Once a day the app asks this website whether a newer version exists; nothing about you or your money is sent, though like any website, laxmee.in sees your phone's internet address. You can turn this off in Profile › Updates.</p>
+  <!-- ===================== Privacy ===================== -->
+  <section class="band deep" id="privacy" aria-labelledby="privacy-title">
+    <div class="wrap privacy">
+      <div class="privacy-art"><img src="/assets/img/privacy-dark.webp" width="480" height="480" alt="" loading="lazy"></div>
+      <div>
+        <span class="eyebrow">Private by design</span>
+        <h2 id="privacy-title" style="margin-top:18px">Your money stays yours.</h2>
+        <div class="privacy-list">
+          <div><h3>Only bank messages</h3><p>Laxmee reads SMS from bank senders and nothing else. One-time passwords and offers are discarded straight away.</p></div>
+          <div><h3>Nothing leaves your phone</h3><p>No account, no server, no analytics. Your transactions are stored encrypted, with the key kept in your phone's secure hardware.</p></div>
+          <div><h3>Locked when you want</h3><p>Open Laxmee with your fingerprint, face or screen lock, straight away or after a minute or five.</p></div>
+          <div><h3>Backups you control</h3><p>Make an encrypted backup with a password only you know, and keep it wherever you like.</p></div>
+        </div>
+      </div>
+    </div>
   </section>
 
-  <footer>Supported banks so far: HDFC, SBI, Bank of India, IDFC FIRST, Axis credit cards. Messages from other banks wait in Needs review.</footer>
+  <!-- ===================== Philosophy ===================== -->
+  <section class="band" aria-labelledby="principles-title">
+    <div class="wrap">
+      <span class="eyebrow">How we design</span>
+      <h2 id="principles-title" style="margin-top:18px;max-width:14em">Calm by default, clear when it counts.</h2>
+      <div class="principles">
+        <article><p class="big">Clarity over clutter</p><p>The figure you came for is the first thing you see. Everything else is one tap away.</p></article>
+        <article><p class="big">Progress over pressure</p><p>No alarms in red unless something is really over. Laxmee states what happened and lets you decide.</p></article>
+        <article><p class="big">Details that feel considered</p><p>Lakh and crore grouping, refunds netted off, salary that lands on the 30th counted for the month it's meant for.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== How it works ===================== -->
+  <section class="band paper" id="how-it-works" aria-labelledby="how-title">
+    <div class="wrap">
+      <span class="eyebrow">How it works</span>
+      <h2 id="how-title" style="margin-top:18px;max-width:16em">From your bank's SMS to a clear picture, in three steps.</h2>
+      <ol class="steps">
+        <li><h3>Bring your picture together</h3><p>Allow SMS access once. Laxmee reads the transaction alerts your bank already sends and builds your accounts and history, right on your phone.</p></li>
+        <li><h3>See your patterns</h3><p>Spending by category and by day, income, recurring payments and how this month compares with the last.</p></li>
+        <li><h3>Move toward your goals</h3><p>Set budgets and savings goals, keep an eye on what's coming up, and watch your progress fill in.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ===================== FAQ ===================== -->
+  <section class="band" id="faq" aria-labelledby="faq-title">
+    <div class="wrap faq">
+      <div class="faq-head">
+        <span class="eyebrow">Questions</span>
+        <h2 id="faq-title">Good to know.</h2>
+      </div>
+      <div class="faq-list">
+        <details>
+          <summary>What is Laxmee?<span class="chev"><svg aria-hidden="true"><use href="#i-plusthin"/></svg></span></summary>
+          <div class="answer"><p>An Android app that shows where your money goes. It reads the transaction SMS your bank sends, on your phone, and turns them into spending, income, budgets, recurring payments and savings goals.</p></div>
+        </details>
+        <details>
+          <summary>What can I track with Laxmee?<span class="chev"><svg aria-hidden="true"><use href="#i-plusthin"/></svg></span></summary>
+          <div class="answer"><p>Spending and income by category, balances for each account, subscriptions, EMIs, SIPs and bills, a monthly statement with opening and closing balances, foreign card charges, and anything you add by hand, like cash.</p></div>
+        </details>
+        <details>
+          <summary>Can I manage budgets and savings goals?<span class="chev"><svg aria-hidden="true"><use href="#i-plusthin"/></svg></span></summary>
+          <div class="answer"><p>Yes. Set monthly limits per category and see what's left each day. Create goals with a target and an optional date, link an investment like a SIP, and add money by hand.</p></div>
+        </details>
+        <details id="faq-availability">
+          <summary>Is Laxmee available on mobile?<span class="chev"><svg aria-hidden="true"><use href="#i-plusthin"/></svg></span></summary>
+          <div class="answer"><p>Laxmee is an Android app (Android 8 or newer). It is in a closed test with a small group right now, and a public release on Google Play comes next. There is no iPhone version yet.</p></div>
+        </details>
+        <details>
+          <summary>Does Laxmee connect directly to my bank?<span class="chev"><svg aria-hidden="true"><use href="#i-plusthin"/></svg></span></summary>
+          <div class="answer"><p>No. Laxmee never asks for a banking login and doesn't connect to any bank. It reads the SMS alerts your bank already sends. Today it understands HDFC, SBI, Bank of India, IDFC FIRST and Axis credit card messages; messages it can't read yet wait in Needs review for you to add or dismiss.</p></div>
+        </details>
+        <details>
+          <summary>How is my financial information handled?<span class="chev"><svg aria-hidden="true"><use href="#i-plusthin"/></svg></span></summary>
+          <div class="answer"><p>It stays on your phone, in an encrypted database whose key never leaves the device. Laxmee has no accounts, no server and no analytics. The only routine network request is a daily check of laxmee.in for a newer version, which you can turn off; nothing about you is sent. Read the <a href="/privacy.html">privacy policy</a>.</p></div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== Final CTA ===================== -->
+  <section class="band" style="padding-top:0" aria-labelledby="cta-title">
+    <div class="wrap">
+      <div class="cta">
+        <img class="leaf" src="/assets/img/leaf-card.webp" width="600" height="400" alt="" loading="lazy">
+        <div class="cta-copy">
+          <h2 id="cta-title">A little more clarity. A lot more intention.</h2>
+          <p>Laxmee is in a closed test on Android. A public release on Google Play is next.</p>
+          <div class="cta-actions">
+            <a class="btn btn-primary" href="#features">Explore Laxmee <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+            <a class="btn btn-ghost" href="#faq-availability" data-open="faq-availability">When can I get it?</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 </main>
-<script>
-// Fill in the newest version from latest.json (same file the app reads).
-fetch('latest.json', { cache: 'no-store' })
-  .then(function (r) { return r.ok ? r.json() : null; })
-  .then(function (l) {
-    if (!l) return;
-    var mb = l.size ? Math.round(l.size / 1e6) + ' MB · ' : '';
-    document.getElementById('download').href = l.url;
-    document.getElementById('download').textContent = 'Download Laxmee ' + l.version;
-    document.getElementById('version').textContent = mb + (l.published ? 'Released ' + l.published + ' · ' : '') + 'Android 8 or newer, 64-bit phones.';
-    if (l.sha256) document.getElementById('sha').textContent = l.sha256;
-    var ul = document.getElementById('notes');
-    (l.notes || []).forEach(function (n) { var li = document.createElement('li'); li.textContent = n; ul.appendChild(li); });
-    ul.hidden = !(l.notes && l.notes.length);
-  })
-  .catch(function () {});
-</script>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="foot">
+      <div>
+        <a class="brand" href="#top" aria-label="Laxmee, back to top">
+          <img class="mark" src="/assets/img/lotus-mint.png" width="40" height="30" alt="">
+          <img class="word" src="/assets/img/wordmark-light.png" width="111" height="22" alt="Laxmee">
+        </a>
+        <p>A calm, private view of your everyday money, built from the SMS your bank already sends.</p>
+      </div>
+      <div>
+        <h2>Product</h2>
+        <ul>
+          <li><a href="#product">Why Laxmee</a></li>
+          <li><a href="#features">Features</a></li>
+          <li><a href="#how-it-works">How it works</a></li>
+          <li><a href="#faq">FAQ</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Legal</h2>
+        <ul>
+          <li><a href="/privacy.html">Privacy policy</a></li>
+          <li><a href="/terms.html">Terms of service</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="legal"><span>© <span id="year">2026</span> Laxmee</span><span>Made in India · Nothing leaves your phone</span></div>
+  </div>
+</footer>
+
+<script src="/assets/site.js" defer></script>
 </body>
 </html>

@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><title>Laxmee share image</title>
+<link rel="stylesheet" href="/assets/site.css">
+<style>
+  html, body { margin: 0; width: 1200px; height: 630px; overflow: hidden; }
+  body { background: #0B110E; position: relative; }
+  .glow { position: absolute; width: 900px; height: 900px; right: -260px; top: -200px; border-radius: 50%;
+    background: radial-gradient(closest-side, rgba(11, 122, 82, 0.42), rgba(11, 122, 82, 0) 72%); }
+  .leaves { position: absolute; right: 40px; bottom: -170px; width: 560px; opacity: 0.85;
+    -webkit-mask-image: radial-gradient(ellipse 50% 50% at 50% 55%, #000 55%, transparent 100%); mask-image: radial-gradient(ellipse 50% 50% at 50% 55%, #000 55%, transparent 100%); }
+  .copy { position: absolute; left: 84px; top: 0; bottom: 0; width: 640px; display: flex; flex-direction: column; justify-content: center; gap: 28px; }
+  .brand { display: flex; align-items: center; gap: 16px; }
+  .brand .mark { height: 52px; width: auto; }
+  .brand .word { height: 40px; width: auto; }
+  h1 { font: 800 76px/1.02 Manrope, sans-serif; letter-spacing: -0.035em; color: #E8EFEA; margin: 0; }
+  h1 span { color: #A2D4B9; }
+  .line { display: flex; align-items: center; gap: 14px; font: 600 20px/1 Inter, sans-serif; letter-spacing: 0.14em; text-transform: uppercase; color: #A2D4B9; }
+  .line::before { content: ""; width: 12px; height: 12px; border-radius: 50%; background: #F5B82E; }
+  .device { position: absolute; right: 120px; top: 64px; transform: rotate(4deg); transform-origin: top center; }
+  .device .phone { --pw: 330px; }
+  .url { position: absolute; left: 84px; bottom: 44px; font: 600 20px/1 Inter, sans-serif; color: #9BAAA1; }
+</style></head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-bell" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></symbol>
+    <symbol id="i-user" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></symbol>
+    <symbol id="i-search" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></symbol>
+    <symbol id="i-file" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M16 13H8"/><path d="M16 17H8"/></symbol>
+    <symbol id="i-home" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8"/><path d="M3 10a2 2 0 0 1 .709-1.528l7-5.999a2 2 0 0 1 2.582 0l7 5.999A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></symbol>
+    <symbol id="i-list" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h.01"/><path d="M3 18h.01"/><path d="M3 6h.01"/><path d="M8 12h13"/><path d="M8 18h13"/><path d="M8 6h13"/></symbol>
+    <symbol id="i-pie" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12c.552 0 1.005-.449.95-.998a10 10 0 0 0-8.953-8.951c-.55-.055-.998.398-.998.95v8a1 1 0 0 0 1 1z"/><path d="M21.21 15.89A10 10 0 1 1 8 2.83"/></symbol>
+    <symbol id="i-target" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></symbol>
+    <symbol id="i-plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12h14"/><path d="M12 5v14"/></symbol>
+    <symbol id="i-food" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"/><path d="M7 2v20"/><path d="M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7"/></symbol>
+    <symbol id="i-basket" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 11-1 9"/><path d="m19 11-4-7"/><path d="M2 11h20"/><path d="m3.5 11 1.6 7.4a2 2 0 0 0 2 1.6h9.8a2 2 0 0 0 2-1.6l1.7-7.4"/><path d="M4.5 15.5h15"/><path d="m5 11 4-7"/><path d="m9 11 1 9"/></symbol>
+    <symbol id="i-car" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.4 2.9A3.7 3.7 0 0 0 2 12v4c0 .6.4 1 1 1h2"/><circle cx="7" cy="17" r="2"/><path d="M9 17h6"/><circle cx="17" cy="17" r="2"/></symbol>
+    <symbol id="i-repeat" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m17 2 4 4-4 4"/><path d="M3 11v-1a4 4 0 0 1 4-4h14"/><path d="m7 22-4-4 4-4"/><path d="M21 13v1a4 4 0 0 1-4 4H3"/></symbol>
+    <symbol id="i-trend" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 7 13.5 15.5 8.5 10.5 2 17"/><path d="M16 7h6v6"/></symbol>
+    <symbol id="i-bag" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></symbol>
+    <symbol id="i-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16"/><path d="M4 12h16"/><path d="M4 17h16"/></symbol>
+    <symbol id="i-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></symbol>
+    <symbol id="i-plusthin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14"/><path d="M5 12h14"/></symbol>
+    <symbol id="i-plane" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"/></symbol>
+    <linearGradient id="g-flow" x1="0" x2="1" y1="0" y2="0"><stop offset="0" stop-color="#1E9A6B"/><stop offset="0.6" stop-color="#72D2A2"/><stop offset="1" stop-color="#F5B82E"/></linearGradient>
+    <linearGradient id="g-gold" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#F5B82E" stop-opacity="0.35"/><stop offset="1" stop-color="#F5B82E" stop-opacity="0"/></linearGradient>
+    <linearGradient id="g-green" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#3CC28C" stop-opacity="0.35"/><stop offset="1" stop-color="#3CC28C" stop-opacity="0"/></linearGradient>
+  </defs>
+</svg>
+<div class="glow"></div>
+<img class="leaves" src="/assets/img/leaves-dark.webp" alt="">
+<div class="copy">
+  <div class="brand"><img class="mark" src="/assets/img/lotus-mint.png" alt=""><img class="word" src="/assets/img/wordmark-light.png" alt=""></div>
+  <h1>Make room for <span>what matters.</span></h1>
+  <div class="line">Personal finance, with clarity</div>
+</div>
+<div class="device"><div class="phone lg" role="img" aria-label="The Laxmee Home screen: a total balance of ₹1,62,790 on a green leaf card, October spending of ₹24,860, income of ₹96,000, and ₹18,140 left to spend.">
+          <div class="screen" aria-hidden="true">
+            <div class="sbar"><span>9:41</span><i></i></div>
+            <div class="scr">
+              <div class="shead">
+                <div><b>Good evening</b><small>● Up to date · just now</small></div>
+                <div class="ibtns"><span class="ib dot"><svg><use href="#i-bell"/></svg></span><span class="ib"><svg><use href="#i-user"/></svg></span></div>
+              </div>
+              <div class="balance">
+                <img src="/assets/img/leaf-card.webp" width="600" height="400" alt="">
+                <div class="in"><span class="lbl">Total balance</span><span class="amt" style="font-size:24px;color:#EEF6F1"><span class="r">₹</span>1,62,790</span></div>
+                <div class="accts"><div><span>HDFC ••4821</span><b class="amt" style="font-size:11px">₹1,24,580</b></div><div><span>SBI ••0932</span><b class="amt" style="font-size:11px">₹38,210</b></div></div>
+                <span class="upd">Updated 11 Oct, 8:42 pm</span>
+              </div>
+              <div class="secrow"><b>October</b><span class="muted" style="font-size:9px">day 11 of 31</span></div>
+              <div class="bento">
+                <div class="glass tile">
+                  <span class="t">Spent</span>
+                  <span class="amt" style="font-size:16px"><span class="r">₹</span>24,860</span>
+                  <span class="chip good">↓ ₹3,140 vs Sept</span>
+                  <svg viewBox="0 0 100 34" preserveAspectRatio="none" style="height:30px;width:100%"><path d="M0 28 C8 27 12 19 20 21 S32 31 42 25 S56 11 64 17 S78 27 88 14 L100 12 L100 34 L0 34Z" fill="url(#g-gold)"/><path d="M0 28 C8 27 12 19 20 21 S32 31 42 25 S56 11 64 17 S78 27 88 14 L100 12" fill="none" stroke="#F5B82E" stroke-width="2" vector-effect="non-scaling-stroke"/></svg>
+                </div>
+                <div class="glass tile">
+                  <span class="t">Income</span>
+                  <span class="amt" style="font-size:16px"><span class="r">₹</span>96,000</span>
+                  <span class="chip plain">Mostly salary</span>
+                  <svg viewBox="0 0 100 34" preserveAspectRatio="none" style="height:30px;width:100%"><path d="M0 4 C4 4 6 30 14 30 L100 30 L100 34 L0 34Z" fill="url(#g-green)"/><path d="M0 4 C4 4 6 30 14 30 L100 30" fill="none" stroke="#3CC28C" stroke-width="2" vector-effect="non-scaling-stroke"/></svg>
+                </div>
+                <div class="glass tile wide">
+                  <svg viewBox="0 0 80 46" style="width:78px;flex:none"><path d="M8 40 A32 32 0 0 1 72 40" fill="none" stroke="#1F2B25" stroke-width="9" stroke-linecap="round"/><path d="M8 40 A32 32 0 0 1 72 40" fill="none" stroke="url(#g-flow)" stroke-width="9" stroke-linecap="round" pathLength="100" stroke-dasharray="58 100"/></svg>
+                  <div><span class="t">Left to spend</span><div class="amt" style="font-size:17px"><span class="r">₹</span>18,140</div><span class="muted" style="font-size:8.5px">about ₹905 a day for 20 days</span></div>
+                </div>
+              </div>
+            </div>
+            <div class="tabbar"><span class="on"><svg><use href="#i-home"/></svg>Home</span><span><svg><use href="#i-list"/></svg>Activity</span><span class="add"><svg><use href="#i-plus"/></svg></span><span><svg><use href="#i-pie"/></svg>Budgets</span><span><svg><use href="#i-target"/></svg>Goals</span></div>
+          </div>
+        </div></div>
+<div class="url">laxmee.in</div>
+</body></html>
