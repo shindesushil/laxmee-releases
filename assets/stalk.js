@@ -70,15 +70,69 @@
     return total;
   }
 
+  /* ---- The phones come alive when the plant reaches them ---- */
+  var features = nodes.map(function (n) { return n.closest('.feature'); });
+  var counters = features.map(function (f) {
+    return Array.prototype.slice.call(f.querySelectorAll('.n[data-to]')).map(function (el) {
+      return { el: el, to: Number(el.dataset.to), raf: 0 };
+    });
+  });
+  var fmt = function (v) { return Math.round(v).toLocaleString('en-IN'); };
+
+  function countUp(c) {
+    cancelAnimationFrame(c.raf);
+    clearTimeout(c.timer);
+    var start = null;
+    var DUR = 1100, DELAY = 250;
+    var step = function (now) {
+      if (start === null) start = now;
+      var t = Math.min(1, Math.max(0, (now - start - DELAY) / DUR));
+      var eased = 1 - Math.pow(1 - t, 3);
+      c.el.textContent = fmt(c.to * eased);
+      if (t < 1) c.raf = requestAnimationFrame(step);
+    };
+    c.raf = requestAnimationFrame(step);
+    // If frames are held up (a background tab), still land on the real figure.
+    c.timer = setTimeout(function () { settle(c); }, DELAY + DUR + 150);
+  }
+  function reset(c) {
+    cancelAnimationFrame(c.raf);
+    clearTimeout(c.timer);
+    c.el.textContent = '0';
+  }
+  function settle(c) {
+    cancelAnimationFrame(c.raf);
+    clearTimeout(c.timer);
+    c.el.textContent = fmt(c.to);
+  }
+
+  function setAlive(i, alive) {
+    var f = features[i];
+    if (f.classList.contains('alive') === alive) return;
+    f.classList.toggle('alive', alive);
+    counters[i].forEach(alive ? countUp : reset);
+  }
+
   function grow() {
-    if (!shown) return;
     if (reduce.matches) {
-      path.style.strokeDashoffset = '0';
+      if (shown) path.style.strokeDashoffset = '0';
       return;
     }
-    var tip = window.innerHeight * TIP - wrap.getBoundingClientRect().top;
-    path.style.strokeDashoffset = String(total - lengthAt(tip));
-    nodes.forEach(function (n, i) { n.classList.toggle('grown', tip >= triggers[i]); });
+    if (shown) {
+      var tip = window.innerHeight * TIP - wrap.getBoundingClientRect().top;
+      path.style.strokeDashoffset = String(total - lengthAt(tip));
+      nodes.forEach(function (n, i) {
+        var reached = tip >= triggers[i];
+        n.classList.toggle('grown', reached);
+        setAlive(i, reached);
+      });
+    } else {
+      // Phones layout has no stem: each screen comes alive as its phone scrolls into view.
+      features.forEach(function (f, i) {
+        var art = f.querySelector('.feature-art').getBoundingClientRect();
+        setAlive(i, art.top < window.innerHeight * 0.75 && art.bottom > 0);
+      });
+    }
   }
 
   var queued = false;
@@ -89,9 +143,22 @@
   }
 
   function setMode() {
-    section.classList.toggle('stalk-live', !reduce.matches);
+    var live = !reduce.matches;
+    // Set the starting states without animating into them.
+    section.classList.add('stalk-init');
+    section.classList.toggle('stalk-live', live);
+    if (!live) {
+      features.forEach(function (f, i) { f.classList.add('alive'); counters[i].forEach(settle); });
+    } else {
+      // Start every screen at zero; grow() brings back the ones already reached.
+      features.forEach(function (f, i) { f.classList.remove('alive'); counters[i].forEach(reset); });
+    }
     layout();
     grow();
+    requestAnimationFrame(function () {
+      requestAnimationFrame(function () { section.classList.remove('stalk-init'); });
+    });
+    setTimeout(function () { section.classList.remove('stalk-init'); }, 120);
   }
 
   setMode();
