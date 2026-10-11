@@ -143,6 +143,10 @@ async function main() {
     await webp(img('art/web/step-goal.webp'), 'step-goal.webp', 560, 78, 4),
     await webp(img('art/web/why-laxmee.webp'), 'why-laxmee.webp', 720, 78, 4),
     await webp(img('art/web/private.webp'), 'private.webp', 840, 78, 4),
+    await webp(img('art/web/stalk-1.webp'), 'stalk-1.webp', 480, 80, 4),
+    await webp(img('art/web/stalk-2.webp'), 'stalk-2.webp', 480, 80, 4),
+    await webp(img('art/web/stalk-3.webp'), 'stalk-3.webp', 480, 80, 4),
+    await webp(img('art/web/stalk-4.webp'), 'stalk-4.webp', 480, 80, 4),
   ];
   log.forEach((l) => console.log(l));
 
