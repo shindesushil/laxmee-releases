@@ -28,8 +28,7 @@ const html = `<!doctype html>
   body { background: #0B110E; position: relative; }
   .glow { position: absolute; width: 900px; height: 900px; right: -260px; top: -200px; border-radius: 50%;
     background: radial-gradient(closest-side, rgba(11, 122, 82, 0.42), rgba(11, 122, 82, 0) 72%); }
-  .leaves { position: absolute; right: 40px; bottom: -170px; width: 560px; opacity: 0.85;
-    -webkit-mask-image: radial-gradient(ellipse 50% 50% at 50% 55%, #000 55%, transparent 100%); mask-image: radial-gradient(ellipse 50% 50% at 50% 55%, #000 55%, transparent 100%); }
+  .leaves { position: absolute; right: -40px; bottom: -10px; width: 860px; opacity: 0.6; }
   .copy { position: absolute; left: 84px; top: 0; bottom: 0; width: 640px; display: flex; flex-direction: column; justify-content: center; gap: 28px; }
   .brand { display: flex; align-items: center; gap: 16px; }
   .brand .mark { height: 52px; width: auto; }
@@ -45,7 +44,7 @@ const html = `<!doctype html>
 <body>
 ${sprite}
 <div class="glow"></div>
-<img class="leaves" src="/assets/img/leaves-dark.webp" alt="">
+<img class="leaves" src="/assets/img/leaves-wide-dark.webp" alt="">
 <div class="copy">
   <div class="brand"><img class="mark" src="/assets/img/lotus-mint.png" alt=""><img class="word" src="/assets/img/wordmark-light.png" alt=""></div>
   <h1>Make room for <span>what matters.</span></h1>

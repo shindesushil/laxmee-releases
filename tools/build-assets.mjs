@@ -38,10 +38,10 @@ const img = (f) => path.join(app, 'assets', f);
  */
 const GRAIN_ALPHA = 72;
 
-async function webp(src, file, width, quality = 72) {
+async function webp(src, file, width, quality = 72, grain = GRAIN_ALPHA) {
   // Threshold at full size, before resizing: a resize hands back premultiplied pixels.
   const { data, info: raw } = await sharp(src).ensureAlpha().raw().toBuffer({ resolveWithObject: true });
-  for (let i = 3; i < data.length; i += 4) if (data[i] < GRAIN_ALPHA) data[i] = 0;
+  for (let i = 3; i < data.length; i += 4) if (data[i] < grain) data[i] = 0;
   const info = await sharp(data, { raw: { width: raw.width, height: raw.height, channels: 4 } })
     .resize({ width, withoutEnlargement: true })
     .webp({ quality, alphaQuality: 70, effort: 6 })
@@ -134,6 +134,13 @@ async function main() {
     await webp(img('art/onboarding-2-dark@3x.png'), 'privacy-dark.webp', 480),
     await webp(img('art/onboarding-1-dark@3x.png'), 'growth-dark.webp', 480),
     await webp(img('art/empty-goals-dark@3x.png'), 'goals-dark.webp', 360),
+    // Website art (clean transparency, no grain: keep soft glows).
+    await webp(img('art/web/leaves-wide-dark.webp'), 'leaves-wide-dark.webp', 1600, 78, 4),
+    await webp(img('art/web/leaves-wide-dark.webp'), 'leaves-wide-dark-800.webp', 800, 78, 4),
+    await webp(img('art/web/leaves-wide-light.webp'), 'leaves-wide-light.webp', 1200, 78, 4),
+    await webp(img('art/web/step-sms.webp'), 'step-sms.webp', 560, 78, 4),
+    await webp(img('art/web/step-patterns.webp'), 'step-patterns.webp', 560, 78, 4),
+    await webp(img('art/web/step-goal.webp'), 'step-goal.webp', 560, 78, 4),
   ];
   log.forEach((l) => console.log(l));
 

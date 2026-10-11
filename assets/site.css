@@ -124,9 +124,12 @@ p { margin: 0; }
 .hero-note { font-size: 14px; color: var(--ink-2); display: flex; align-items: center; gap: 10px; }
 .hero-note svg { width: 16px; height: 16px; color: var(--mint); flex: none; }
 .hero-art { position: relative; display: flex; justify-content: center; padding-block: 12px 0; }
-.hero-art .leaves { position: absolute; bottom: -90px; left: 50%; width: min(560px, 130%); transform: translateX(-50%); opacity: 0.9; pointer-events: none; -webkit-mask-image: radial-gradient(ellipse 50% 50% at 50% 55%, #000 55%, transparent 100%); mask-image: radial-gradient(ellipse 50% 50% at 50% 55%, #000 55%, transparent 100%); }
+/* The wide leaves rise from the bottom-right corner of the hero, behind the phone. */
+.hero-leaves { position: absolute; right: 0; bottom: 0; width: min(62vw, 1040px); height: auto; opacity: 0.55; pointer-events: none; }
+.hero-grid { z-index: 1; }
 @media (max-width: 900px) {
   .hero-grid { grid-template-columns: 1fr; }
+  .hero-leaves { width: 130vw; right: -15vw; opacity: 0.45; }
   .hero-art { margin-top: 12px; }
 }
 
@@ -200,22 +203,27 @@ p { margin: 0; }
 /* How it works */
 .steps { list-style: none; margin: clamp(40px, 6vw, 72px) 0 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(24px, 4vw, 56px); counter-reset: step; }
 .steps li { display: flex; flex-direction: column; gap: 14px; counter-increment: step; position: relative; }
+/* Each step's illustration sits above its number. */
+.steps .art { order: -1; height: 190px; display: flex; align-items: flex-end; margin-bottom: 8px; }
+.steps .art img { max-height: 190px; width: auto; max-width: 100%; }
 .steps li::before {
   content: counter(step); display: inline-flex; align-items: center; justify-content: center;
   width: 44px; height: 44px; border-radius: 50%; background: var(--emerald); color: #fff;
   font: 800 18px/1 var(--display);
 }
 .steps li::after { /* the line joining the steps */
-  content: ""; position: absolute; top: 22px; left: 60px; right: calc(-1 * clamp(24px, 4vw, 56px) + 16px); height: 1px; background: var(--paper-hair);
+  content: ""; position: absolute; top: 234px; left: 60px; right: calc(-1 * clamp(24px, 4vw, 56px) + 16px); height: 1px; background: var(--paper-hair);
 }
 .steps li:last-child::after { display: none; }
 .steps h3 { color: var(--paper-ink); }
 .steps p { color: var(--paper-ink-2); font-size: 16px; }
 @media (max-width: 760px) {
   .steps { grid-template-columns: 1fr; gap: 0; }
-  .steps li { padding: 0 0 32px 64px; }
-  .steps li::before { position: absolute; left: 0; top: 0; }
-  .steps li::after { top: 52px; bottom: 6px; left: 22px; right: auto; width: 1px; height: auto; }
+  .steps li { padding: 0 0 40px 64px; }
+  .steps .art { height: 160px; }
+  .steps .art img { max-height: 160px; }
+  .steps li::before { position: absolute; left: 0; top: 182px; }
+  .steps li::after { top: 234px; bottom: 6px; left: 22px; right: auto; width: 1px; height: auto; }
 }
 
 /* Final CTA */
