@@ -1,0 +1,10 @@
+{
+  "version": "1.0.0",
+  "versionCode": 1,
+  "url": "https://github.com/shindesushil/laxmee-releases/releases/download/v1.0.0/laxmee-1.0.0.apk",
+  "size": 72248982,
+  "sha256": "d5d754e984d3df5d8b81f39a4a83ddc9068c2bd7715caf91a9394c8f7da2b6fc",
+  "minAndroid": 26,
+  "published": "2026-10-11",
+  "notes": ["First release"]
+}

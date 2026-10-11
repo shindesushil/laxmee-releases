@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Laxmee</title>
+<meta name="description" content="Laxmee reads your bank SMS on your phone and shows where your money goes. Nothing leaves your phone.">
+<style>
+/* Placeholder download page (the designed site is milestone D4). System fonts only: no third-party requests. */
+:root {
+  --bg: #F8FAF7; --surface: #FFFFFF; --ink: #15251D; --ink2: #5F6C64; --rule: #E6EBE5;
+  --brand: #006B45; --onbrand: #FFFFFF; --gold: #F5B82E; --soft: #EAF5EF;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root { --bg: #0B110E; --surface: #121A16; --ink: #E6EDE8; --ink2: #9BA89F; --rule: #222E28;
+          --brand: #3CC28C; --onbrand: #03140C; --soft: #11281E; color-scheme: dark; }
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--ink);
+  font: 16px/1.55 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+main { max-width: 640px; margin: 0 auto; padding: 48px 20px 64px; display: flex; flex-direction: column; gap: 28px; }
+h1 { font-size: 40px; line-height: 1.1; letter-spacing: -1px; margin: 0; }
+h1 span { color: var(--gold); }
+h2 { font-size: 18px; margin: 0 0 8px; }
+p { margin: 0; color: var(--ink2); }
+.card { background: var(--surface); border: 1px solid var(--rule); border-radius: 24px; padding: 20px; display: flex; flex-direction: column; gap: 12px; }
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; background: var(--brand); color: var(--onbrand);
+  text-decoration: none; font-weight: 700; padding: 14px 22px; border-radius: 999px; font-size: 17px; }
+.btn:focus-visible { outline: 3px solid var(--gold); outline-offset: 2px; }
+.meta { font-size: 14px; color: var(--ink2); }
+code { font: 12px/1.5 ui-monospace, SFMono-Regular, Consolas, monospace; word-break: break-all; background: var(--soft); padding: 2px 6px; border-radius: 6px; color: var(--ink); }
+ol, ul { margin: 0; padding-left: 20px; color: var(--ink2); display: flex; flex-direction: column; gap: 6px; }
+footer { font-size: 13px; color: var(--ink2); }
+a { color: var(--brand); }
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <h1>Laxmee<span>.</span></h1>
+    <p style="margin-top:10px">Reads your bank SMS on your phone and shows where your money goes: spending, income, budgets and goals. No account, no server. Nothing leaves your phone.</p>
+  </header>
+
+  <section class="card" aria-labelledby="dl">
+    <h2 id="dl">Download for Android</h2>
+    <div><a class="btn" id="download" href="https://github.com/shindesushil/laxmee-releases/releases/latest">Download Laxmee</a></div>
+    <p class="meta" id="version">Android 8 or newer, 64-bit phones.</p>
+    <ul id="notes" hidden></ul>
+  </section>
+
+  <section class="card" aria-labelledby="install">
+    <h2 id="install">Installing</h2>
+    <ol>
+      <li>Open the downloaded file. Android asks to let your browser install apps: allow it once.</li>
+      <li>If Play Protect says the app is unknown, tap <em>More details › Install anyway</em>.</li>
+      <li>Updating later? Make a backup first (Profile › Backup). Updates keep your data.</li>
+    </ol>
+  </section>
+
+  <section class="card" aria-labelledby="check">
+    <h2 id="check">Check your download</h2>
+    <p class="meta">SHA-256 of the file:</p>
+    <code id="sha">see the release page</code>
+    <p class="meta">Signed with the Laxmee certificate, SHA-256:</p>
+    <code>84:2B:4F:D9:09:23:0F:E6:6F:E9:CF:95:47:AB:88:AA:2C:94:66:00:8A:05:54:EE:88:77:21:51:0D:A0:BD:18</code>
+  </section>
+
+  <section class="card" aria-labelledby="privacy">
+    <h2 id="privacy">Privacy</h2>
+    <p>Your SMS, transactions and backups stay on your phone, encrypted. Once a day the app asks this website whether a newer version exists; nothing about you or your money is sent, though like any website, laxmee.in sees your phone's internet address. You can turn this off in Profile › Updates.</p>
+  </section>
+
+  <footer>Supported banks so far: HDFC, SBI, Bank of India, IDFC FIRST, Axis credit cards. Messages from other banks wait in Needs review.</footer>
+</main>
+<script>
+// Fill in the newest version from latest.json (same file the app reads).
+fetch('latest.json', { cache: 'no-store' })
+  .then(function (r) { return r.ok ? r.json() : null; })
+  .then(function (l) {
+    if (!l) return;
+    var mb = l.size ? Math.round(l.size / 1e6) + ' MB · ' : '';
+    document.getElementById('download').href = l.url;
+    document.getElementById('download').textContent = 'Download Laxmee ' + l.version;
+    document.getElementById('version').textContent = mb + (l.published ? 'Released ' + l.published + ' · ' : '') + 'Android 8 or newer, 64-bit phones.';
+    if (l.sha256) document.getElementById('sha').textContent = l.sha256;
+    var ul = document.getElementById('notes');
+    (l.notes || []).forEach(function (n) { var li = document.createElement('li'); li.textContent = n; ul.appendChild(li); });
+    ul.hidden = !(l.notes && l.notes.length);
+  })
+  .catch(function () {});
+</script>
+</body>
+</html>
