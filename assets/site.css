@@ -389,4 +389,38 @@ p { margin: 0; }
 .doc .note { margin-top: 20px; padding: 16px 18px; border-radius: 16px; background: #2B2213; color: #F0B95A; font-size: 15px; }
 .doc a { color: var(--mint); }
 
+/* ---------- Motion: one calm entrance, the app's easing, never a bounce ---------- */
+@media (prefers-reduced-motion: no-preference) {
+  .site-header { animation: fade-in .6s ease both; }
+  .hero-copy > * { animation: rise .8s cubic-bezier(.2, .8, .2, 1) both; }
+  .hero-copy > :nth-child(1) { animation-delay: .05s; }
+  .hero-copy > :nth-child(2) { animation-delay: .14s; }
+  .hero-copy > :nth-child(3) { animation-delay: .26s; }
+  .hero-copy > :nth-child(4) { animation-delay: .36s; }
+  .hero-copy > :nth-child(5) { animation-delay: .46s; }
+  .hero-art .phone { animation: phone-in 1s cubic-bezier(.2, .8, .2, 1) .22s both; }
+  .hero-leaves { animation: leaves-in 1.4s cubic-bezier(.2, .8, .2, 1) .1s both; transform-origin: 100% 100%; }
+  /* Inside the phone the screen builds up like the app: card, tiles, then the charts. */
+  .hero .balance { animation: rise .7s cubic-bezier(.2, .8, .2, 1) .62s both; }
+  .hero .secrow { animation: fade-in .6s ease .74s both; }
+  .hero .bento > :nth-child(1) { animation: rise .7s cubic-bezier(.2, .8, .2, 1) .8s both; }
+  .hero .bento > :nth-child(2) { animation: rise .7s cubic-bezier(.2, .8, .2, 1) .88s both; }
+  .hero .bento > :nth-child(3) { animation: rise .7s cubic-bezier(.2, .8, .2, 1) .96s both; }
+  .hero svg.draw { animation: draw 1s cubic-bezier(.2, .8, .2, 1) 1.1s both; }
+  .hero .flow { animation: flow 1.1s cubic-bezier(.2, .8, .2, 1) 1.15s both; }
+
+  /* FAQ: rises in as it comes into view (site.js marks only what starts off screen). */
+  .reveal-wait { opacity: 0; transform: translateY(16px); }
+  .reveal-wait.revealed { opacity: 1; transform: none; transition: opacity .6s cubic-bezier(.2, .8, .2, 1), transform .6s cubic-bezier(.2, .8, .2, 1); }
+}
+@keyframes rise { from { opacity: 0; transform: translateY(18px); } }
+@keyframes fade-in { from { opacity: 0; } }
+@keyframes phone-in { from { opacity: 0; transform: translateY(44px) scale(.97); } }
+@keyframes leaves-in { from { opacity: 0; transform: translateY(60px) rotate(-3deg); } }
+@keyframes draw { from { clip-path: inset(0 100% 0 0); } to { clip-path: inset(0 0 0 0); } }
+@keyframes flow { from { stroke-dasharray: 0 100; } }
+
+/* FAQ answers open and close smoothly (site.js animates the height). */
+.faq-list .answer { overflow: hidden; }
+
 @media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }
