@@ -141,6 +141,8 @@ async function main() {
     await webp(img('art/web/step-sms.webp'), 'step-sms.webp', 560, 78, 4),
     await webp(img('art/web/step-patterns.webp'), 'step-patterns.webp', 560, 78, 4),
     await webp(img('art/web/step-goal.webp'), 'step-goal.webp', 560, 78, 4),
+    await webp(img('art/web/why-laxmee.webp'), 'why-laxmee.webp', 720, 78, 4),
+    await webp(img('art/web/private.webp'), 'private.webp', 840, 78, 4),
   ];
   log.forEach((l) => console.log(l));
 
