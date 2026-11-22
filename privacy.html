@@ -4,13 +4,13 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Privacy Policy — Laxmee</title>
-<meta name="description" content="How Laxmee handles your information: bank SMS are read and stored only on your phone, encrypted. No account, no server, no analytics.">
+<meta name="description" content="How Laxmee handles your information: bank SMS are read and stored only on your phone, encrypted. Anonymous usage stats you can turn off, and message formats only if you choose.">
 <link rel="canonical" href="https://laxmee.in/privacy.html">
 <meta name="theme-color" content="#0B110E">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Laxmee">
 <meta property="og:title" content="Privacy Policy — Laxmee">
-<meta property="og:description" content="Bank SMS are read and stored only on your phone, encrypted. No account, no server, no analytics.">
+<meta property="og:description" content="Bank SMS are read and stored only on your phone, encrypted. No account. Anonymous usage stats you can turn off.">
 <meta property="og:url" content="https://laxmee.in/privacy.html">
 <meta property="og:image" content="https://laxmee.in/og/laxmee-og.png">
 <meta property="og:image:width" content="1200">
@@ -34,14 +34,15 @@
 <main class="wrap doc" id="main">
   <span class="eyebrow">Privacy</span>
   <h1>Privacy policy</h1>
-  <p>Last updated 11 October 2026. This policy covers the Laxmee app for Android and this website.</p>
-  <p class="note">Draft for review before Laxmee's public release. It describes how the app works today.</p>
+  <p>Last updated 22 November 2026. This policy covers the Laxmee app for Android and this website.</p>
 
   <h2>The short version</h2>
   <ul>
-    <li>Laxmee reads your bank's transaction SMS <strong>on your phone</strong> and stores what it finds <strong>on your phone</strong>, encrypted.</li>
-    <li>There is no Laxmee account, no Laxmee server and no analytics. We never receive your messages, transactions or balances.</li>
-    <li>Uninstalling Laxmee deletes everything it stored.</li>
+    <li>Laxmee reads your bank's transaction SMS <strong>on your phone</strong> and stores what it finds <strong>on your phone</strong>, encrypted. There is no Laxmee account.</li>
+    <li>Your messages, transactions, balances and payees never leave your phone.</li>
+    <li>Anonymous usage stats and crash reports go to Google Firebase. They hold counts, never amounts, and you can turn them off in Profile.</li>
+    <li>Only if you choose, Laxmee sends the <em>wording</em> of a bank message it couldn't read, with every number, name and link removed, so a later version can read it.</li>
+    <li>No ads, and your data is never sold. Uninstalling Laxmee deletes everything it stored on your phone.</li>
   </ul>
 
   <h2>What the app reads</h2>
@@ -56,18 +57,45 @@
   <p>Everything Laxmee stores is in an encrypted database on your phone. The encryption key is created on your phone and kept in Android's secure key storage; it never leaves the device. Laxmee turns off Android's automatic cloud backup for its data, so it is not copied to Google Drive.</p>
 
   <h2>What leaves your phone</h2>
+
+  <h3>Anonymous usage stats and crash reports</h3>
+  <p>On by default; turn them off in <strong>Profile › Helping Laxmee › Share anonymous usage stats</strong>, which takes effect straight away. Laxmee uses Google Firebase Analytics and Crashlytics to learn which features are used, which banks to support next and what breaks. Your installation is identified by a random ID, never by your name, phone number or Google account. Laxmee sends:</p>
   <ul>
-    <li><strong>Update check.</strong> Once a day, the app asks <code>https://laxmee.in/latest.json</code> whether a newer version exists. The request contains nothing about you; like any web request, it reveals your phone's internet address to the site's host (GitHub Pages). You can turn this off in Profile › Updates. Copies installed from Google Play are updated by Google Play.</li>
-    <li><strong>Backups and exports you make.</strong> An encrypted backup (protected by a password only you know) or an Excel/CSV export goes only where you choose to save or share it. Exports are not encrypted, and the app says so.</li>
-    <li><strong>Optional features.</strong> If a future version offers on-device "Smarter reading", it will be off by default; turning it on downloads a model once, and your messages are still read on your phone only. Purchases, when offered, are handled by Google Play.</li>
+    <li>which screens are opened, by type only (for example "a goal page", never which goal);</li>
+    <li>a few actions: finishing setup, creating a goal, setting a budget, linking a recurring payment, opening the Laxmee Plus screen, exporting, making a backup;</li>
+    <li>coarse facts in bands: the banks you use (for example "HDFC, SBI"), how many accounts (1, 2–3, 4 or more), roughly how many transactions in the last 30 days (under 50, 50–200, over 200), the share of your bank messages Laxmee could read (in steps of 10%), and whether you use Laxmee Plus;</li>
+    <li>crash reports: where the app's code failed, with your phone model, Android version and app version.</li>
   </ul>
-  <p>Laxmee has no crash reporting, analytics or advertising.</p>
+  <p>Firebase estimates your country, region and city from your internet address; Laxmee never uses your phone's location. <strong>Never sent:</strong> amounts, balances, payees, account numbers or message text. Laxmee doesn't collect the advertising ID or the Android ID, and doesn't allow this data to be used for ads. Google keeps usage stats for up to 14 months and crash reports for 90 days.</p>
+
+  <h3>Message formats Laxmee can't read (only if you choose)</h3>
+  <p>Messages Laxmee can't read wait in <strong>Needs review</strong>. You can send a message's format by tapping <strong>Send to Laxmee</strong>, which shows exactly what will be sent first, or by turning on <strong>Profile › Helping Laxmee › Send formats Laxmee can't read</strong>. That switch is off until you turn it on.</p>
+  <p>On your phone, before anything is sent, Laxmee replaces every number (amounts, account and card numbers, dates, times, references, phone numbers) and every name, UPI ID, email address and link with a placeholder. A message that still contains a digit afterwards is never sent. For example, <code>Rs 1,250.00 debited from a/c **9611 to ramesh.k@okhdfc on 03-10-26. Ref 4567</code> is sent as <code>Rs {AMT} debited from a/c {ACCT} to {VPA} on {DATE}. Ref {N}</code>.</p>
+  <p>Each format goes with the bank's sender ID (for example <code>HDFCBK</code>), the app version and a random anonymous ID (Firebase Authentication) used only so one phone counts a format once. Formats are stored in Google Cloud Firestore in the United States, and kept while they help Laxmee read messages.</p>
+
+  <h3>Required-update check</h3>
+  <p>When the app opens or comes back to the screen, it asks Google Firebase Remote Config for the oldest Laxmee version that is still safe to use, at most once every 6 hours. The request carries a random Firebase installation ID that isn't linked to you, your Google account or your usage stats, and nothing about your money. Because it keeps a broken or unsafe version from being used, it is part of how the app works and isn't covered by the usage-stats switch. If your version is older than that, Laxmee asks you to update it from Google Play.</p>
+
+  <h3>Exchange rates (only if you choose)</h3>
+  <p>Off by default. If you turn on <strong>Profile › Foreign charges › Look up exchange rates</strong>, or tap <strong>Use the rate for</strong> a day on a foreign-currency charge, Laxmee asks <code>api.frankfurter.dev</code> (an open-source service publishing European Central Bank rates) for that day's rate. The request holds only a currency code and a date, never an amount or anything about you; like any web request, it reveals your phone's internet address to that service.</p>
+
+  <h3>Purchases</h3>
+  <p>Laxmee Plus is bought through Google Play, which handles payment under Google's privacy policy. Laxmee receives only a confirmation that Plus was bought, checked on your phone, and never sees your card or UPI details.</p>
+
+  <h3>Update check (copies from laxmee.in only)</h3>
+  <p>Once a day, copies installed from this website ask <code>https://laxmee.in/latest.json</code> whether a newer version exists. The request contains nothing about you; like any web request, it reveals your phone's internet address to the site's host (GitHub Pages). You can turn this off in Profile › Updates. Copies installed from Google Play are updated by Google Play and don't make this check.</p>
+
+  <h3>Backups and exports you make</h3>
+  <p>An encrypted backup (protected by a password only you know) or an Excel/CSV export goes only where you choose to save or share it. Exports are not encrypted, and the app says so.</p>
+
+  <h2>Who receives data</h2>
+  <p>Google, as Laxmee's service provider for Firebase (<a href="https://firebase.google.com/support/privacy">Firebase privacy</a>) and Google Play (<a href="https://policies.google.com/privacy">Google privacy policy</a>). If you use exchange-rate lookup, Frankfurter receives the currency and date described above. Laxmee doesn't sell data or share it with advertisers or data brokers. Google may process data outside India, including in the United States. Everything is sent over encrypted connections (HTTPS), and Firebase accepts message formats only from the genuine app (Google Play Integrity), rejecting any format that contains a digit.</p>
 
   <h2>Permissions</h2>
   <ul>
     <li><strong>Read and receive SMS:</strong> to build your transactions from bank alerts.</li>
     <li><strong>Fingerprint or face:</strong> only if you turn on app lock.</li>
-    <li><strong>Internet:</strong> for the update check described above.</li>
+    <li><strong>Internet:</strong> for usage stats, the required-update check, message formats and exchange rates you choose to send or look up, purchases and the update check described above.</li>
   </ul>
 
   <h2>This website</h2>
@@ -76,18 +104,23 @@
   <h2>Your control</h2>
   <ul>
     <li>Delete a transaction, change any category, or hide an account that isn't yours.</li>
+    <li>Turn off usage stats or format sharing in Profile at any time.</li>
     <li>Turn off SMS access in Android settings at any time; Laxmee keeps working with what it has and with entries you add by hand.</li>
-    <li>Uninstall to delete everything Laxmee stored.</li>
+    <li>Uninstall to delete everything Laxmee stored on your phone. There is no other copy.</li>
+    <li>To delete usage stats already sent, write to us. They carry no name, so Google deletes them by your installation's random ID, which we'll help you find. Message formats carry nothing that identifies you and can't be traced back to you.</li>
   </ul>
 
   <h2>Children</h2>
-  <p>Laxmee is meant for adults managing their own money and is not directed at children.</p>
+  <p>Laxmee is meant for adults managing their own money and is not directed at children under 18.</p>
 
   <h2>Changes</h2>
-  <p>If this policy changes, the new version will be posted here with a new date.</p>
+  <p>If Laxmee starts collecting anything new, this page changes first, and the app tells you and asks where your agreement is needed. The date at the top shows the latest version.</p>
+
+  <h2>Contact and grievances</h2>
+  <p>For questions, data deletion requests, or grievances under India's Digital Personal Data Protection Act, 2023, write to <a href="mailto:contact@laxmee.in">contact@laxmee.in</a>. We reply within 7 days.</p>
 </main>
 <footer class="site-footer">
-  <div class="wrap legal" style="margin-top:0;border-top:0;padding-top:0"><span>© <span id="year">2026</span> Laxmee</span><span><a href="/">Home</a> · <a href="/terms.html">Terms of service</a></span></div>
+  <div class="wrap legal" style="margin-top:0;border-top:0;padding-top:0"><span>© <span id="year">2026</span> Laxmee</span><span><a href="/">Home</a> · <a href="/terms.html">Terms of service</a> · <a href="mailto:contact@laxmee.in">Contact</a></span></div>
 </footer>
 <script>document.getElementById('year').textContent = String(new Date().getFullYear());</script>
 </body>
